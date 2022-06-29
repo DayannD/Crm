@@ -1,0 +1,23 @@
+package fr.m2i.apifilrougecrm.service;
+
+import fr.m2i.apifilrougecrm.entity.Order;
+import fr.m2i.apifilrougecrm.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository;
+    public List<Order> getOrders(){
+        return orderRepository.findAll();
+    }
+
+    public void createOrder(Order order){
+        orderRepository.save(order);
+    }
+}
