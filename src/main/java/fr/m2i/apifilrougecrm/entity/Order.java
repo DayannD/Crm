@@ -17,22 +17,11 @@ public class Order {
     @Column(name = "unitPrice")
     private float unitPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "clientid")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "clientId")
     private Client client;
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     //private state ? enum
-    //private client;
-
-
     public Order() {
     }
 
@@ -41,6 +30,14 @@ public class Order {
         this.designation = designation;
         this.nbDays = nbDays;
         this.unitPrice = unitPrice;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getId() {
