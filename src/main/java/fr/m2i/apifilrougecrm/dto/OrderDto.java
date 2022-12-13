@@ -1,50 +1,41 @@
-package fr.m2i.apifilrougecrm.entity;
+package fr.m2i.apifilrougecrm.dto;
 
-import javax.persistence.*;
+public class OrderDto {
 
-@Entity
-@Table(name="orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "typePresta")
     private String typePresta;
-    @Column(name = "designation")
     private String designation;
-    @Column(name = "nbDays")
     private int nbDays;
-    @Column(name = "unitPrice")
     private float unitPrice;
 
-    @ManyToOne//(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "clientId")
-    private Client client;
-    private int state;
-    public Order() {
+    private ClientDto client;
+    private String state;
+
+    private  String orderClient_id;
+    public OrderDto() {
     }
 
-    public Order(String typePresta, String designation, int nbDays, float unitPrice) {
+    public OrderDto(String typePresta, String designation, int nbDays, float unitPrice) {
         this.typePresta = typePresta;
         this.designation = designation;
         this.nbDays = nbDays;
         this.unitPrice = unitPrice;
     }
 
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public Client getClient() {
+    public ClientDto getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(ClientDto client) {
         this.client = client;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Long getId() {
@@ -59,7 +50,7 @@ public class Order {
         return typePresta;
     }
 
-    public void setTypePersta(String typePresta) {
+    public void setTypePresta(String typePresta) {
         this.typePresta = typePresta;
     }
 
@@ -85,5 +76,13 @@ public class Order {
 
     public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getOrderClient_id() {
+        return orderClient_id;
+    }
+
+    public void setOrderClient_id(String orderClient_id) {
+        this.orderClient_id = orderClient_id;
     }
 }

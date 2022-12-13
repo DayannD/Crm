@@ -20,4 +20,16 @@ public class OrderService {
     public void createOrder(Order order){
         orderRepository.save(order);
     }
+
+    public Order getOrder(Long id){
+        return orderRepository.findById(id).get();
+    }
+
+    public Order updateOrder(Order order){
+       return orderRepository.save(order);
+    }
+
+    public void deleteOrder(Long id){
+        orderRepository.deleteById(id);
+    }
 }
